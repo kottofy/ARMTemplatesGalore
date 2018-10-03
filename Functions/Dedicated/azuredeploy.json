@@ -4,7 +4,7 @@
     "parameters": {
       "appName": {
         "type": "string",
-        "defaultValue": "[concat(uniquestring(resourceGroup().id), 'App')]",
+        "defaultValue": "[concat(uniquestring(resourceGroup().id), 'DedicatedApp')]",
         "metadata": {
           "description": "The name of the function app that you wish to create."
         }
@@ -57,7 +57,7 @@
     "variables": {
       "functionAppName": "[parameters('appName')]",
       "hostingPlanName": "[parameters('appName')]",
-      "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'dedicatedazfunctionsstorage')]"
+      "storageAccountName": "[concat(uniquestring(parameters('appName')), 'storage')]"
     },
     "resources": [
       {
