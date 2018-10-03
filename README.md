@@ -13,3 +13,6 @@ This is a place to put all useful ARM templates for a particular project that is
     
         `az group deployment create --resource-group YOUR_RESOURCE_GROUP_HERE--template-file azuredeploy.json --parameters azuredeploy.parameters.json`
 
+
+Notes
+    - For the Azure Function, the Always On feature is enabled at the Basic App Service Plan or above
