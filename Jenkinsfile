@@ -5,7 +5,7 @@ pipeline {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
           sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-          sh 'az group delete --name ExampleGroup --yes'
+          // sh 'az group delete --name ExampleGroup --yes'
           sh 'az group create --name ExampleGroup --location "East US"'
         }
       }
