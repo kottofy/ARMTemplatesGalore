@@ -4,6 +4,12 @@
   "parameters": {
     "storageAccountType": {
       "value": "Standard_GRS"
+    },
+    "sku": {
+      "value": "Basic"
+    },
+    "appName" : {
+      "value": "newappwootwoot123"
     }
   }
 }
