@@ -12,8 +12,8 @@ pipeline {
     stage('setup') {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          // sh 'az group delete --name ExampleGroup1 --yes'
-          sh 'az group create --name ExampleGroup1 --location "East US"'
+          // sh 'az group delete --name ExampleGroup --yes'
+          sh 'az group create --name ExampleGroup --location "East US"'
         }
       }
     }
@@ -21,11 +21,11 @@ pipeline {
     stage('deploy') {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          sh 'az group deployment create --resource-group ExampleGroup1 --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-          // sh 'az group deployment create --resource-group ExampleGroup1 --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
-          // sh 'az group deployment create --resource-group ExampleGroup1 --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
-          // sh 'az group deployment create --resource-group ExampleGroup1 --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
-          // sh 'az group deployment create --resource-group ExampleGroup1 --template-file Functions/Dedicated/azuredeploy.json --parameters Functions/Dedicated/azuredeploy.parameters.json'
+          sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+          // sh 'az group deployment create --resource-group ExampleGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
+          // sh 'az group deployment create --resource-group ExampleGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
+          // sh 'az group deployment create --resource-group ExampleGroup --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
+          // sh 'az group deployment create --resource-group ExampleGroup --template-file Functions/Dedicated/azuredeploy.json --parameters Functions/Dedicated/azuredeploy.parameters.json'
           
         }
       }
