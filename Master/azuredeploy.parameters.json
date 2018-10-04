@@ -7,6 +7,15 @@
         },
         "appinsightsName": {
             "value": "appinsightswootwoot123"
-        }
+        },
+        "storageAccountType": {
+            "value": "Standard_LRS"
+          },
+          "sku": {
+            "value": "Basic"
+          },
+          "workerSize": {
+            "value": "0"
+          }
     }
 }
