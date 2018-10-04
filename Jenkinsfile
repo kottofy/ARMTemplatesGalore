@@ -12,8 +12,10 @@ pipeline {
     }
     stage('teardown')
     {
-      withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-        sh 'az group delete --name ExampleGroup'
+      steps {
+        withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
+          sh 'az group delete --name ExampleGroup'
+        }
       }
     }
     stage('deploy') {
