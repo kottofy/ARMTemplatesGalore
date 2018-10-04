@@ -12,7 +12,7 @@ pipeline {
     stage('setup') {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          // sh 'az group delete --name ExampleGroup --yes'
+          sh 'az group delete --name ExampleGroup --yes'
           sh 'az group create --name ExampleGroup --location "East US"'
         }
       }
