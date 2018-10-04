@@ -6,7 +6,7 @@
       "value": "F1"
     },
     "repoUrl": {
-      "value": "https://github.com/Azure-Samples/dotnet-core-api"
+      "value": "https://github.com/Azure-Samples/app-service-api-dotnet-todo-list"
     }
   }
 }
