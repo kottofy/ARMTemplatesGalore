@@ -14,7 +14,7 @@ pipeline {
     {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          sh 'az group delete --name ExampleGroup'
+          sh 'az group delete --name ExampleGroup --yes'
         }
       }
     }

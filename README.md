@@ -16,3 +16,4 @@ This is a place to put all useful ARM templates for a particular project that is
 
 Notes
     - For the Azure Function, the Always On feature is enabled at the Basic App Service Plan or above
+    - Must use api version "2015-04-01" for dynamic sku with "Microsoft.Web/serverfarms"
