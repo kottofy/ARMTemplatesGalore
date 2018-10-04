@@ -208,10 +208,6 @@
         "appinsights": {
             "type": "object",
             "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appinsightsName')))]"
-        },
-        "storageAccount": {
-            "type": "object",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', concat(copyIndex(), parameters('storageAccountName'))))]"
         }
     }
 }
