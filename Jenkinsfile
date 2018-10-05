@@ -16,7 +16,7 @@ pipeline {
       }
     }
 
-    //  stage('keyvault') {
+    //  stage('deploy-keyvault') {
     //   steps {
     //       // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
     //       // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
@@ -24,7 +24,7 @@ pipeline {
     //   }
     // }
 
-    //  stage('web') {
+    //  stage('deploy-web') {
     //   steps {
     //       sh 'az group deployment create --resource-group ExampleGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
     //       sh 'az group deployment create --resource-group ExampleGroup --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
@@ -32,13 +32,13 @@ pipeline {
     //   }
     // }
 
-    // stage('storage') {
+    // stage('deploy-storage') {
     //   steps {
     //       sh 'az group deployment create --resource-group ExampleGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
     //   }
     // }
    
-    stage('master') {
+    stage('deploy-master') {
       steps {
           sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
