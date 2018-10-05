@@ -186,7 +186,7 @@
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(), parameters('storageAccountName'))]",
+            "name": "[concat(parameters('storageAccountName'), copyIndex())]",
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
