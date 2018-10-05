@@ -11,9 +11,8 @@ pipeline {
 
     stage('setup') {
       steps {
-        sh 'az group exists --name ExampleGroup'
-          // sh 'az group delete --name ExampleGroup --yes'
-          sh 'az group create --name ExampleGroup --location "East US"'
+          sh 'chmod +x ${WORKSPACE}/lib/setup.sh'
+          sh '${WORKSPACE}/lib/setup.sh'
       }
     }
 
