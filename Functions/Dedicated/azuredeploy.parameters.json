@@ -10,6 +10,9 @@
     },
     "workerSize": {
       "value": "0"
+    },
+    "appName" : {
+      "value": "devdedicatedappjb123"
     }
   }
 }

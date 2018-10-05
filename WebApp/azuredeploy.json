@@ -2,7 +2,7 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "siteName": {
+    "appName": {
       "type": "string",
       "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]",
       "metadata": {
@@ -11,7 +11,7 @@
     },
     "hostingPlanName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('siteName'),'-plan')]",
+      "defaultValue": "[concat(parameters('appName'),'-plan')]",
       "metadata": {
         "description": "The host name. To use the default value, do not specify a new value."
       }
@@ -87,7 +87,7 @@
     },
     {
       "apiVersion": "2015-08-01",
-      "name": "[parameters('siteName')]",
+      "name": "[parameters('appName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -102,7 +102,7 @@
           "name": "web",
           "type": "sourcecontrols",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+            "[resourceId('Microsoft.Web/Sites', parameters('appName'))]"
           ],
           "properties": {
             "RepoUrl": "[parameters('repoURL')]",

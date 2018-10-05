@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "databricksWorkspaceName" : {
-            "value": "databrickswootwoot123"
+            "value": "devdatabricksjb123"
         },
         "appinsightsName": {
-            "value": "appinsightswootwoot123"
+            "value": "devappinsightsjb123"
         },
         "storageAccountType": {
             "value": "Standard_LRS"

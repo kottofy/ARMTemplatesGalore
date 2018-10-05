@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "keyVaultName": {
-        "value": "keyvaultwootwoot123"
+        "value": "devkeyvaultjb123"
       },
       "objectId": {
-        "value": "keyvaultidwootwoot123"
+        "value": "UNIQUE-ID"
       }
     }
   }

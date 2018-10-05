@@ -4,6 +4,9 @@
     "parameters": {
         "storageAccountType": {
             "value": "Standard_GRS"
+        },
+        "storageAccountName": {
+            "value": "devstoragejb123"
         }
     }
 }

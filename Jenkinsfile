@@ -1,6 +1,7 @@
 pipeline {
   agent any
   stages {
+   
     stage('login') {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
@@ -13,6 +14,12 @@ pipeline {
       steps {
           sh 'chmod +x ${WORKSPACE}/lib/setup.sh'
           sh '${WORKSPACE}/lib/setup.sh'
+      }
+    }
+   
+    stage('deploy-master') {
+      steps {
+          sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
     }
 
@@ -37,18 +44,11 @@ pipeline {
     //       sh 'az group deployment create --resource-group ExampleGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
     //   }
     // }
-   
-    stage('deploy-master') {
-      steps {
-          sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-      }
-    }
 
     // stage('teardown') {
     //   steps {
     //       sh 'az group delete --name ExampleGroup --yes'
     //   }
     // }
-
   }
 }
