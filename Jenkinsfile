@@ -16,13 +16,13 @@ pipeline {
       }
     }
 
-     stage('keyvault') {
-      steps {
-          // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-          // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-          sh 'az group deployment create --resource-group ExampleGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
-      }
-    }
+    //  stage('keyvault') {
+    //   steps {
+    //       // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+    //       // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+    //       sh 'az group deployment create --resource-group ExampleGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
+    //   }
+    // }
 
     //  stage('web') {
     //   steps {
