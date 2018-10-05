@@ -4,6 +4,9 @@
     "parameters": {
       "keyVaultName": {
         "value": "keyvaultwootwoot123"
+      },
+      "objectId": {
+        "value": "keyvaultidwootwoot123"
       }
     }
   }

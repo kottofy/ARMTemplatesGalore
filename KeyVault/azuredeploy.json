@@ -17,7 +17,6 @@
     },
     "objectId": {
       "type": "string",
-      "defaultValue": "[subscription().objectId]",
       "metadata": {
         "description": "Object Id of the AD user. Get using Get-AzureRmADUser or Get-AzureRmADServicePrincipal cmdlets"
       }
