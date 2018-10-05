@@ -13,14 +13,11 @@ pipeline {
       steps {
           sh 'az group delete --name ExampleGroup --yes'
           sh 'az group create --name ExampleGroup --location "East US"'
-        // withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-        // }
       }
     }
    
     stage('deploy') {
       steps {
-        // withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
           // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
           // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
           sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
@@ -28,7 +25,6 @@ pipeline {
           sh 'az group deployment create --resource-group ExampleGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
           // sh 'az group deployment create --resource-group ExampleGroup --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
           // sh 'az group deployment create --resource-group ExampleGroup --template-file Functions/Dedicated/azuredeploy.json --parameters Functions/Dedicated/azuredeploy.parameters.json'
-        // }
       }
     }
   }
