@@ -15,12 +15,6 @@
           "description": "Tenant Id of the subscription. Get using Get-AzureRmSubscription cmdlet or Get Subscription API"
         }
       },
-      "objectId": {
-        "type": "string",
-        "metadata": {
-          "description": "Object Id of the AD user. Get using Get-AzureRmADUser or Get-AzureRmADServicePrincipal cmdlets"
-        }
-      },
       "keysPermissions": {
         "type": "array",
         "defaultValue": [
@@ -105,7 +99,6 @@
           "accessPolicies": [
             {
               "tenantId": "[parameters('tenantId')]",
-              "objectId": "[parameters('objectId')]",
               "permissions": {
                 "keys": "[parameters('keysPermissions')]",
                 "secrets": "[parameters('secretsPermissions')]"
