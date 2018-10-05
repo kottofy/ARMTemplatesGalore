@@ -98,7 +98,7 @@
         }
     },
     "variables": {
-        "managedResourceGroupName": "[concat('databricks-rg-', parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
+        "managedResourceGroupName": "[concat('devdatabricks-rg-', parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat('devfuncjb', parameters('appName'))]",
         "hostingPlanName": "[concat('devhostplanjb', parameters('appName'))]",
         "storageAccountName": "[concat('devstoragejb', uniquestring(parameters('appName')))]"

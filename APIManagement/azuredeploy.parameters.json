@@ -7,6 +7,9 @@
         },
         "publisherName": {
             "value": "devpublishernamejb123"
+        },
+        "amsName": {
+            "value": "devapiservicejb123"
         }
     }
 }
