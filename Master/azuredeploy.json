@@ -208,6 +208,22 @@
         "appinsights": {
             "type": "object",
             "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appinsightsName')))]"
+        },
+        "storageAccountNameOutput": {
+            "type": "string",
+            "value": "[concat(copyIndex(), parameters('storageAccountName'))]",
+            "copy": {
+                "name": "storagecopy",
+                "count": 4
+            }
+        },
+        "storageUri": {
+            "type": "object",
+            "value": "[concat(copyIndex(), parameters('storageAccountName'))]",
+            "copy": {
+                "name": "storagecopy",
+                "count": 4
+            }
         }
     }
 }
