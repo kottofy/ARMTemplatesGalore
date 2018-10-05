@@ -19,7 +19,7 @@ pipeline {
    
     // stage('deploy-master') {
     //   steps {
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
     //   }
     // }
 
@@ -27,39 +27,39 @@ pipeline {
     //   steps {
     //       // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
     //       // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
     //   }
     // }
 
     //  stage('deploy-web') {
     //   steps {
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file Functions/Dedicated/azuredeploy.json --parameters Functions/Dedicated/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Functions/Dynamic/azuredeploy.json --parameters Functions/Dynamic/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Functions/Dedicated/azuredeploy.json --parameters Functions/Dedicated/azuredeploy.parameters.json'
     //   }
     // }
 
     // stage('deploy-storage') {
     //   steps {
-    //       sh 'az group deployment create --resource-group DevResourceGroupJB --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
     //   }
     // }
 
      stage('deploy-api-management') {
       steps {
-          sh 'az group deployment create --resource-group DevResourceGroupJB --template-file APIManagement/azuredeploy.json --parameters APIManagement/azuredeploy.parameters.json'
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file APIManagement/azuredeploy.json --parameters APIManagement/azuredeploy.parameters.json'
       }
     }
 
       stage('deploy-oms') {
       steps {
-          sh 'az group deployment create --resource-group DevResourceGroupJB --template-file OMS/azuredeploy.json --parameters OMS/azuredeploy.parameters.json'
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file OMS/azuredeploy.json --parameters OMS/azuredeploy.parameters.json'
       }
     }
 
     // stage('teardown') {
     //   steps {
-    //       sh 'az group delete --name DevResourceGroupJB --yes'
+    //       sh 'az group delete --name DevJBResourceGroup --yes'
     //   }
     // }
   }
