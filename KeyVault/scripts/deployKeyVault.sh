@@ -1,3 +1,5 @@
+#!/bin/bash
+
 vaultname={kristintest1234356}
 password={muhP4ss892734678}
 
