@@ -1,13 +1,9 @@
 #!/bin/bash
 
-resourceGroupName={ExampleGroup}
+resource_group_name="ExampleGroup"
+location="eastus"
 
-if ! command az >/dev/null; then
-  echo "Must install Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" >&2
-  exit 1
+if az group exists --name "$resource_group_name"; then 
+    az group delete --name "$resource_group_name" --yes
 fi
-
-if az group exists --name "$resourceGroupName"; then 
-    az group delete --name "$resourceGroupName" --yes
-fi
-az group create --name "$resourceGroupName" --location "East US"
+az group create --name "$resource_group_name" --location "$location"
