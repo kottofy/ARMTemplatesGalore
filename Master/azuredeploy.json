@@ -101,7 +101,7 @@
         "managedResourceGroupName": "[concat('devdatabricks-rg-', parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat('devfuncjb', parameters('appName'))]",
         "hostingPlanName": "[concat('devplanjb', parameters('appName'))]",
-        "storageAccountName": "[concat('dev', uniquestring(parameters('appName')))]"
+        "storageAccountName": "[concat('devjb', uniquestring(parameters('appName')))]"
     },
     "resources": [
         {
