@@ -1,6 +1,8 @@
+#!/bin/bash
 
-if [az group exists --name ExampleGroup]
-then 
-    az group delete --name ExampleGroup --yes
+resourceGroupName={ExampleGroup}
+
+if [az group exists --name $resourceGroupName]; then 
+    az group delete --name $resourceGroupName --yes
 fi
-az group create --name ExampleGroup --location "East US"
+az group create --name $resourceGroupName --location "East US"
