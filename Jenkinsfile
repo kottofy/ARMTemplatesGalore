@@ -17,11 +17,11 @@ pipeline {
       }
     }
    
-    stage('deploy-master') {
-      steps {
-          sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-      }
-    }
+    // stage('deploy-master') {
+    //   steps {
+    //       sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+    //   }
+    // }
 
     //  stage('deploy-keyvault') {
     //   steps {
@@ -44,6 +44,18 @@ pipeline {
     //       sh 'az group deployment create --resource-group ExampleGroup --template-file Storage/azuredeploy.json --parameters Storage/azuredeploy.parameters.json'
     //   }
     // }
+
+     stage('deploy-api-management') {
+      steps {
+          sh 'az group deployment create --resource-group ExampleGroup --template-file APIManagement/azuredeploy.json --parameters APIManagement/azuredeploy.parameters.json'
+      }
+    }
+
+      stage('deploy-oms') {
+      steps {
+          sh 'az group deployment create --resource-group ExampleGroup --template-file OMS/azuredeploy.json --parameters OMS/azuredeploy.parameters.json'
+      }
+    }
 
     // stage('teardown') {
     //   steps {
