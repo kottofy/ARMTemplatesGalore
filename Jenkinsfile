@@ -19,9 +19,9 @@ pipeline {
    
     stage('deploy-master') {
       steps {
-          sh 'az group deployment create --resource-group DevResourceGroupJB --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
     }
-    
+
   }
 }
