@@ -27,7 +27,7 @@
         },
         "storageAccountName": {
             "type": "string",
-            "defaultValue": "[concat(uniquestring('storage'), 'storage')]",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
             "metadata": {
                 "description": "The name of the Azure Storage Account to create."
             }
