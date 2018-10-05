@@ -11,17 +11,17 @@ pipeline {
 
     stage('setup') {
       steps {
-        withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          // sh 'az group delete --name ExampleGroup --yes'
           sh 'az group create --name ExampleGroup --location "East US"'
-        }
+        // withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
+          // sh 'az group delete --name ExampleGroup --yes'
+        // }
       }
     }
    
     stage('deploy') {
       steps {
         withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
-          // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+          sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
           sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
           // sh 'az group deployment create --resource-group ExampleGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
           // sh 'az group deployment create --resource-group ExampleGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
