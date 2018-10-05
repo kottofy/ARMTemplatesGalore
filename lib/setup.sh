@@ -1,6 +1,6 @@
 #!/bin/bash
 
-resource_group_name="ExampleGroup"
+resource_group_name="DevResourceGroupJB"
 location="eastus"
 
 if az group exists --name "$resource_group_name"; then 
