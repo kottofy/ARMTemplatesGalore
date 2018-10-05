@@ -7,7 +7,7 @@ if ! command az >/dev/null; then
   exit 1
 fi
 
-if az group exists --name $resourceGroupName; then 
-    az group delete --name $resourceGroupName --yes
+if az group exists --name "$resourceGroupName"; then 
+    az group delete --name "$resourceGroupName" --yes
 fi
-az group create --name $resourceGroupName --location "East US"
+az group create --name "$resourceGroupName" --location "East US"
