@@ -105,9 +105,7 @@
             "[resourceId('Microsoft.Web/Sites', parameters('appName'))]"
           ],
           "properties": {
-            "RepoUrl": "[parameters('repoURL')]",
-            "branch": "[parameters('branch')]",
-            "IsManualIntegration": true
+            
           }
         }
       ]
