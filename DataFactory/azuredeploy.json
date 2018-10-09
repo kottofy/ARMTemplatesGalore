@@ -20,14 +20,16 @@
                 "description": "Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
             }
         }
-        
     },
     "resources": [
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "2017-09-01-preview",
             "type": "Microsoft.DataFactory/factories",
-            "location": "[parameters('dataFactoryLocation')]"
+            "location": "[parameters('dataFactoryLocation')]",
+            "properties": {
+                "description": "Data Factory"
+            }
         }
     ]
 }

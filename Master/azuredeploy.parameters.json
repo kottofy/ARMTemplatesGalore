@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "databricksWorkspaceName" : {
+        "databricksWorkspaceName": {
             "value": "devdatabricksjb123"
         },
         "appinsightsName": {
@@ -10,12 +10,18 @@
         },
         "storageAccountType": {
             "value": "Standard_LRS"
-          },
-          "sku": {
+        },
+        "sku": {
             "value": "Basic"
-          },
-          "workerSize": {
+        },
+        "workerSize": {
             "value": "0"
-          }
+        },
+        "dataFactoryName": {
+            "value": "devdatafactoryjb123"
+        },
+        "dataFactoryLocation": {
+            "value": "East US"
+        }
     }
 }
