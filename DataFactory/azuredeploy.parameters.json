@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "dataFactoryName": {
-        "value": "muhdatafactoryko123"
+        "value": "devdatafactoryjb123"
       },    
       "dataFactoryLocation": {
         "value": "East US"
