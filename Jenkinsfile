@@ -17,17 +17,17 @@ pipeline {
       }
     }
    
-    // stage('deploy-master') {
-    //   steps {
-    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-    //   }
-    // }
-
-    stage('deploy-datafactory') {
+    stage('deploy-master') {
       steps {
-          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file DataFactory/azuredeploy.json --parameters DataFactory/azuredeploy.parameters.json'
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
     }
+
+    // stage('deploy-datafactory') {
+    //   steps {
+    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file DataFactory/azuredeploy.json --parameters DataFactory/azuredeploy.parameters.json'
+    //   }
+    // }
 
     //  stage('deploy-keyvault') {
     //   steps {
