@@ -74,6 +74,13 @@
                 "description": "The name of the Azure Storage Account to create."
             }
         },
+        "functionStorageAccountName": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create for the function."
+            }
+        },
         "storageAccountPricingTier": {
             "type": "string",
             "defaultValue": "Standard_LRS",
@@ -193,15 +200,18 @@
         }
     },
     "variables": {
-        "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
-        "functionAppName": "[concat(parameters('prefixName'), parameters('appName'))]",
-        "hostingPlanName": "[concat(parameters('prefixName'), parameters('appName'))]",
-        "storageAccountName": "[concat(parameters('prefixName'), parameters('appName'), uniquestring(parameters('appName')))]"
+        "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
+        "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
+        "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]", 
+        "hostingPlanName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
+        "storageAccountName": "[concat(parameters('prefixName'), parameters('appName')))]",
+        "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
+        "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
+            "name": "[variables('functionStorageName')]",
             "apiVersion": "2017-06-01",
             "location": "[parameters('location')]",
             "kind": "Storage",
@@ -280,7 +290,7 @@
             }
         },
         {
-            "name": "[parameters('dataFactoryName')]",
+            "name": "[variables('dataFactoryName')]",
             "apiVersion": "2017-09-01-preview",
             "type": "Microsoft.DataFactory/factories",
             "location": "[parameters('dataFactoryLocation')]",
@@ -303,7 +313,7 @@
         },
         {
             "apiVersion": "2015-08-01",
-            "name": "[parameters('webAppName')]",
+            "name": "[variables('webAppName')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "dependsOn": [

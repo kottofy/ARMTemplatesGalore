@@ -61,6 +61,12 @@ echo '
         },
         "storageAccountName6": {
             "value": "'$storageAccountName6'"
+        },
+        "functionStorageAccountName": {
+            "value": "blob'$current'"
+        },
+        "functionAppName": {
+            "value": "function'$current'"
         }
     }
 }
