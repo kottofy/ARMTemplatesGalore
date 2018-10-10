@@ -5,9 +5,6 @@
     "sku": {
       "value": "F1"
     },
-    "repoUrl": {
-      "value": "https://github.com/Azure-Samples/app-service-api-dotnet-todo-list"
-    },
     "appName": {
       "value": "devwebappjb123"
     }
