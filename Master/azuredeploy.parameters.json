@@ -1,0 +1,107 @@
+{
+
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  
+    "contentVersion": "1.0.0.0",
+  
+      "parameters": {
+  
+          "prefixName": {
+  
+              "value": "jber"
+  
+          },
+  
+          "databricksWorkspaceName": {
+  
+              "value": "databricks20181010225945"
+  
+          },
+  
+          "appinsightsName": {
+  
+              "value": "appinsights20181010225945"
+  
+          },
+  
+          "storageAccountType": {
+  
+              "value": "Standard_LRS"
+  
+          },
+  
+          "storageAccountSku": {
+  
+              "value": "Basic"
+  
+          },
+  
+          "workerSize": {
+  
+              "value": "0"
+  
+          },
+  
+          "dataFactoryName": {
+  
+              "value": "datafactory20181010225945"
+  
+          },
+  
+          "dataFactoryLocation": {
+  
+              "value": "East US"
+  
+          },
+  
+          "webAppSku": {
+  
+              "value": "F1"
+  
+          },
+  
+          "webAppName": {
+  
+              "value": "webapp20181010225945"
+  
+          },
+  
+          "storageAccountName1": {
+  
+              "value": "1blob20181010225945"
+  
+          },
+  
+          "storageAccountName2": {
+  
+              "value": "2blob20181010225945"
+  
+          },
+  
+          "storageAccountName3": {
+  
+              "value": "3blob20181010225945"
+  
+          },
+  
+          "storageAccountName4": {
+  
+              "value": "4blob20181010225945"
+  
+          },
+  
+          "storageAccountName5": {
+  
+              "value": "5blob20181010225945"
+  
+          },
+  
+          "storageAccountName6": {
+  
+              "value": "6blob20181010225945"
+  
+          }
+  
+      }
+  
+  }
