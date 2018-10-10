@@ -2,6 +2,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "namingPrefix": {
+            "value": "jber"
+        },
         "databricksWorkspaceName": {
             "value": "devdatabricksjb123"
         },
@@ -11,8 +14,11 @@
         "storageAccountType": {
             "value": "Standard_LRS"
         },
-        "sku": {
+        "storageAccountSku": {
             "value": "Basic"
+        },
+        "storageAccountName": {
+            "value": "jber"
         },
         "workerSize": {
             "value": "0"

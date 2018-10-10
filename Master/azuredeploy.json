@@ -2,6 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "prefixName": {
+            "type": "string",
+            "defaultValue": "jber",
+            "metadata": {
+                "description": "The prefix for all resources created here."
+            }
+        },
         "databricksWorkspaceName": {
             "type": "string",
             "metadata": {
@@ -54,12 +61,12 @@
         },
         "appName": {
             "type": "string",
-            "defaultValue": "[concat('DedicatedApp', uniquestring(resourceGroup().id))]",
+            "defaultValue": "[concat('App', uniquestring(resourceGroup().id))]",
             "metadata": {
                 "description": "The name of the function app that you wish to create."
             }
         },
-        "sku": {
+        "storageAccountSku": {
             "type": "string",
             "allowedValues": [
                 "Free",
@@ -151,10 +158,10 @@
         }
     },
     "variables": {
-        "managedResourceGroupName": "[concat('devdatabricks-rg-', parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
-        "functionAppName": "[concat('devfuncjb', parameters('appName'))]",
-        "hostingPlanName": "[concat('devplanjb', parameters('appName'))]",
-        "storageAccountName": "[concat('devjb', uniquestring(parameters('appName')))]"
+        "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
+        "functionAppName": "[concat(parameters('prefixName'), parameters('appName'))]",
+        "hostingPlanName": "[concat(parameters('prefixName'), parameters('appName'))]",
+        "storageAccountName": "[concat(parameters('prefixName'), parameters('storageAccountName'), uniquestring(parameters('appName')))]"
     },
     "resources": [
         {
@@ -174,7 +181,7 @@
             "location": "[parameters('location')]",
             "properties": {
                 "name": "[variables('hostingPlanName')]",
-                "sku": "[parameters('sku')]",
+                "sku": "[parameters('storageAccountSku')]",
                 "workerSize": "[parameters('workerSize')]",
                 "hostingEnvironment": "",
                 "numberOfWorkers": 1
