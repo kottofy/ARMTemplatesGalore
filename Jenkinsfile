@@ -14,13 +14,13 @@ pipeline {
       steps {
         sh 'chmod +x ${WORKSPACE}/lib/setup.sh'
         sh '${WORKSPACE}/lib/setup.sh'
+        sh 'ls ${WORKSPACE}'
       }
     }
    
     stage('deploy-master') {
       steps {
         sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters azuredeploy.parameters.json'
-        sh 'ls ${WORKSPACE} -al'
       }
     }
 
