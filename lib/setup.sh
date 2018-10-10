@@ -21,7 +21,7 @@ echo '
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
     "parameters": {
-        "namingPrefix": {
+        "prefixName": {
             "value": "jber"
         },
         "databricksWorkspaceName": {
@@ -71,4 +71,4 @@ echo '
         }
     }
 }
-' | tee azuredeploy.parameters.json
+' | tee master/azuredeploy.parameters.json
