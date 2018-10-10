@@ -76,7 +76,6 @@
       "name": "[parameters('appName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
-      "kind": "webapi",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -91,9 +90,7 @@
           "dependsOn": [
             "[resourceId('Microsoft.Web/Sites', parameters('appName'))]"
           ],
-          "properties": {
-            
-          }
+          "properties": {}
         }
       ]
     }
