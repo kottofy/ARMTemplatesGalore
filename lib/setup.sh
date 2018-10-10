@@ -11,9 +11,7 @@ if az group exists --name "$resource_group_name"; then
 fi
 az group create --name "$resource_group_name" --location "$location"
 
-
-#Create Parameters JSON file
-echo '
+parameters='
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
@@ -53,4 +51,9 @@ echo '
         }
     }
 }
-' > azuredeploy.parameters.json
+'
+
+echo parameters
+
+#Create Parameters JSON file
+echo parameters > azuredeploy.parameters.json
