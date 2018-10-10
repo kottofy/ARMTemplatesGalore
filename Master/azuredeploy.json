@@ -278,6 +278,7 @@
             "apiVersion": "2015-08-01",
             "name": "[parameters('webAppName')]",
             "type": "Microsoft.Web/sites",
+            "kind": "webapi",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
