@@ -81,6 +81,13 @@
                 "description": "The name of the Azure Storage Account to create for the function."
             }
         },
+        "functionAppName": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create for the function."
+            }
+        },
         "storageAccountPricingTier": {
             "type": "string",
             "defaultValue": "Standard_LRS",
@@ -172,7 +179,7 @@
         },
         "hostingPlanName": {
             "type": "string",
-            "defaultValue": "[concat(parameters('appName'),'-plan')]",
+            "defaultValue": "[concat(parameters('appName'),'plan')]",
             "metadata": {
                 "description": "The host name. To use the default value, do not specify a new value."
             }
