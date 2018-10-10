@@ -32,7 +32,42 @@
                 "description": "The name of the Application Insights resource to create."
             }
         },
-        "storageAccountName": {
+        "storageAccountName1": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create."
+            }
+        },
+        "storageAccountName2": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create."
+            }
+        },
+        "storageAccountName3": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create."
+            }
+        },
+        "storageAccountName4": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create."
+            }
+        },
+        "storageAccountName5": {
+            "type": "string",
+            "defaultValue": "[concat('dev', uniquestring('storage'))]",
+            "metadata": {
+                "description": "The name of the Azure Storage Account to create."
+            }
+        },
+        "storageAccountName6": {
             "type": "string",
             "defaultValue": "[concat('dev', uniquestring('storage'))]",
             "metadata": {
@@ -245,21 +280,6 @@
             }
         },
         {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('storageAccountName'), copyIndex())]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 4
-            }
-        },
-        {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "2017-09-01-preview",
             "type": "Microsoft.DataFactory/factories",
@@ -299,10 +319,69 @@
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webAppName'))]"
-                    ],
-                    "properties": {}
+                    ]
                 }
             ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName1'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName2'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName3'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName4'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName5'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName6'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
         }
     ],
     "outputs": {
