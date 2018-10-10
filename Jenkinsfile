@@ -12,14 +12,16 @@ pipeline {
 
     stage('dev-setup') {
       steps {
-        sh 'chmod +x ${WORKSPACE}/lib/setup.sh'
-        sh '${WORKSPACE}/lib/setup.sh'
+        sh 'chmod +x ${WORKSPACE}/lib/setupRG.sh'
+        sh '${WORKSPACE}/lib/setupRG.sh'
         sh 'ls ${WORKSPACE}'
       }
     }
    
     stage('deploy-master') {
       steps {
+        sh 'chmod +x ${WORKSPACE}/lib/setupMaster.sh'
+        sh '${WORKSPACE}/lib/setupMaster.sh'
         sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
     }
