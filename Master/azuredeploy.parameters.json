@@ -22,6 +22,12 @@
         },
         "dataFactoryLocation": {
             "value": "East US"
+        },
+        "webAppSku": {
+            "value": "F1"
+        },
+        "webAppName": {
+            "value": "devwebappjb123"
         }
     }
 }
