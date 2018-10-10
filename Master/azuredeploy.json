@@ -18,7 +18,7 @@
         "databricksPricingTier": {
             "type": "string",
             "defaultValue": "standard",
-            "allowedValues": [
+            "allowedValues": [  
                 "standard",
                 "premium"
             ],
@@ -196,7 +196,7 @@
         "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), '-', uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('appName'))]",
         "hostingPlanName": "[concat(parameters('prefixName'), parameters('appName'))]",
-        "storageAccountName": "[concat(parameters('prefixName'), parameters('storageAccountName'), uniquestring(parameters('appName')))]"
+        "storageAccountName": "[concat(parameters('prefixName'), parameters('appName'), uniquestring(parameters('appName')))]"
     },
     "resources": [
         {
