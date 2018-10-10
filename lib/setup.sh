@@ -3,7 +3,7 @@
 resource_group_name="DevJBResourceGroup"
 location="eastus"
 num_of_storage_accounts=6
-current="$(date +%F)"
+current="$(date +%Y%m%d%H%M%S)"
 
 
 if az group exists --name "$resource_group_name"; then 
@@ -20,10 +20,10 @@ parameters='
             "value": "jber"
         },
         "databricksWorkspaceName": {
-            "value": "databricks" + current
+            "value": "databricks" + $current
         },
         "appinsightsName": {
-            "value": "appinsights" + current
+            "value": "appinsights" + $current
         },
         "storageAccountType": {
             "value": "Standard_LRS"
@@ -32,13 +32,13 @@ parameters='
             "value": "Basic"
         },
         "storageAccountName": {
-            "value": "storage" + current
+            "value": "storage" + $current
         },
         "workerSize": {
             "value": "0"
         },
         "dataFactoryName": {
-            "value": "datafactory" + current
+            "value": "datafactory" + $current
         },
         "dataFactoryLocation": {
             "value": "East US"
@@ -47,13 +47,13 @@ parameters='
             "value": "F1"
         },
         "webAppName": {
-            "value": "webapp" + current
+            "value": "webapp" + $current
         }
     }
 }
 '
 
-echo parameters
+echo $parameters
 
 #Create Parameters JSON file
-echo parameters > azuredeploy.parameters.json
+echo $parameters > azuredeploy.parameters.json
