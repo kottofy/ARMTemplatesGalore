@@ -17,11 +17,11 @@ pipeline {
       }
     }
    
-    // stage('deploy-master') {
-    //   steps {
-    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-    //   }
-    // }
+    stage('deploy-master') {
+      steps {
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+      }
+    }
 
     // stage('deploy-datafactory') {
     //   steps {
@@ -37,11 +37,11 @@ pipeline {
     //   }
     // }
 
-    stage('deploy-web') {
-      steps {
-        sh 'az group deployment create --resource-group DevJBResourceGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
-      }
-    }
+    // stage('deploy-web') {
+    //   steps {
+    //     sh 'az group deployment create --resource-group DevJBResourceGroup --template-file WebApp/azuredeploy.json --parameters WebApp/azuredeploy.parameters.json'
+    //   }
+    // }
 
     // stage('deploy-functions') {
     //   steps {
