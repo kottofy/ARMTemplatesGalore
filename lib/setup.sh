@@ -11,7 +11,7 @@ if az group exists --name "$resource_group_name"; then
 fi
 az group create --name "$resource_group_name" --location "$location"
 
-parameters='
+echo '
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
@@ -20,10 +20,10 @@ parameters='
             "value": "jber"
         },
         "databricksWorkspaceName": {
-            "value": "databricks" + $current
+            "value": "databricks" + ' + $current + '
         },
         "appinsightsName": {
-            "value": "appinsights" + $current
+            "value": "appinsights" + ' + $current + '
         },
         "storageAccountType": {
             "value": "Standard_LRS"
@@ -32,13 +32,13 @@ parameters='
             "value": "Basic"
         },
         "storageAccountName": {
-            "value": "storage" + $current
+            "value": "storage" + ' + $current + '
         },
         "workerSize": {
             "value": "0"
         },
         "dataFactoryName": {
-            "value": "datafactory" + $current
+            "value": "datafactory" + ' + $current + '
         },
         "dataFactoryLocation": {
             "value": "East US"
@@ -47,13 +47,8 @@ parameters='
             "value": "F1"
         },
         "webAppName": {
-            "value": "webapp" + $current
+            "value": "webapp" + ' + $current + '
         }
     }
 }
-'
-
-echo $parameters
-
-#Create Parameters JSON file
-echo $parameters > azuredeploy.parameters.json
+' | tee azuredeploy.parameters.json
