@@ -22,10 +22,10 @@ echo '
             "value": "jber"
         },
         "databricksWorkspaceName": {
-            "value": "devdatabricksjb123"
+            "value": "databricks" + current
         },
         "appinsightsName": {
-            "value": "devappinsightsjb123"
+            "value": "appinsights" + current
         },
         "storageAccountType": {
             "value": "Standard_LRS"
@@ -34,13 +34,13 @@ echo '
             "value": "Basic"
         },
         "storageAccountName": {
-            "value": "jber"
+            "value": "storage" + current
         },
         "workerSize": {
             "value": "0"
         },
         "dataFactoryName": {
-            "value": "devdatafactoryjb123"
+            "value": "datafactory" + current
         },
         "dataFactoryLocation": {
             "value": "East US"
@@ -49,7 +49,7 @@ echo '
             "value": "F1"
         },
         "webAppName": {
-            "value": "devwebappjb123"
+            "value": "webapp" + current
         }
     }
 }
