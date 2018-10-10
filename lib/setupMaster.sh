@@ -64,4 +64,4 @@ echo '
         }
     }
 }
-' | tee master/azuredeploy.parameters.json
+' | tee Master/azuredeploy.parameters.json
