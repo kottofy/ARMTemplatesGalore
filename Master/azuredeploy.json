@@ -274,7 +274,6 @@
                 "name": "[parameters('hostingPlanName')]"
             }
         },
-        ,
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[concat(parameters('prefixName'), parameters('storageAccountName1'))]",
