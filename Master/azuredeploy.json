@@ -235,7 +235,7 @@
         "functionAppHostingPlanName": "[concat(parameters('prefixName'), parameters('functionAppHostingPlanName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
-        "functionStorageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('functionStorageAccountName'))]"
+        "functionStorageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', parameters('functionStorageAccountName'))]"
     },
     "resources": [
         {
