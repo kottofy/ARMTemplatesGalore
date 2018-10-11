@@ -225,102 +225,12 @@
             "location": "[parameters('location')]",
             "properties": {
                 "name": "[variables('hostingPlanName')]",
-                "sku": "[parameters('storageAccountSku')]",
+                "sku": "[parameters('webAppSku')]",
                 "workerSize": "[parameters('workerSize')]",
                 "hostingEnvironment": "",
                 "numberOfWorkers": 1
             }
-        },
-        {
-            "type": "Microsoft.Databricks/workspaces",
-            "name": "[parameters('databricksWorkspaceName')]",
-            "location": "[parameters('location')]",
-            "apiVersion": "2018-04-01",
-            "sku": {
-                "name": "[parameters('databricksPricingTier')]"
-            },
-            "properties": {
-                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', variables('managedResourceGroupName'))]"
-            }
-        },
-        {
-            "type": "Microsoft.Insights/components",
-            "name": "[parameters('appinsightsName')]",
-            "apiVersion": "2014-04-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "Application_Type": "other"
-            }
-        },
-        {
-            "name": "[variables('dataFactoryName')]",
-            "apiVersion": "2017-09-01-preview",
-            "type": "Microsoft.DataFactory/factories",
-            "location": "[parameters('dataFactoryLocation')]",
-            "properties": {
-                "description": "Data Factory"
-            }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName1'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName2'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName3'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName4'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName5'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(parameters('prefixName'), parameters('storageAccountName6'))]",
-            "apiVersion": "2018-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
-            },
-            "kind": "StorageV2"
-        },
+        }
         {
             "apiVersion": "2016-08-01",
             "type": "Microsoft.Web/sites",
@@ -354,6 +264,29 @@
                         "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('functionStorageName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName')), '2015-05-01-preview').key1,';')]",
                         "FUNCTIONS_EXTENSION_VERSION": "~1"
                     }
+                }
+            ]
+        },
+        {
+            "apiVersion": "2015-08-01",
+            "name": "[variables('webAppName')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+            ],
+            "properties": {
+                "serverFarmId": "[variables('hostingPlanName')]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "web",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', variables('webAppName'))]"
+                    ],
+                    "properties": {}
                 }
             ]
         }
