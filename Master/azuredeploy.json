@@ -172,7 +172,7 @@
         },
         "hostingPlanName": {
             "type": "string",
-            "defaultValue": "[concat(parameters('webAppName'),'plan')]",
+            "defaultValue": "[concat('plan' uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The host name. To use the default value, do not specify a new value."
             }
@@ -203,7 +203,7 @@
         "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
         "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
-        "hostingPlanName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
+        "hostingPlanName": "[concat(parameters('prefixName'), parameters('hostingPlanName'))]",
         "storageAccountName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"

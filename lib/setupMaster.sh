@@ -67,6 +67,9 @@ echo '
         },
         "functionAppName": {
             "value": "function'$current'"
+        },
+        "hostingPlanName": {
+            "value": "plan'$current'"
         }
     }
 }
