@@ -204,7 +204,7 @@
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
         "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
         "hostingPlanName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
-        "storageAccountName": "[concat(parameters('prefixName'), parameters('webAppName')))]",
+        "storageAccountName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
