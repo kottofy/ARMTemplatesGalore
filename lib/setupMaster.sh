@@ -27,7 +27,7 @@ echo '
             "value": "Standard_LRS"
         },
         "storageAccountSku": {
-            "value": "Basic"
+            "value": "Standard"
         },
         "workerSize": {
             "value": "0"
@@ -39,7 +39,7 @@ echo '
             "value": "East US"
         },
         "webAppSku": {
-            "value": "F1"
+            "value": "S1"
         },
         "webAppName": {
             "value": "webapp'$current'"
