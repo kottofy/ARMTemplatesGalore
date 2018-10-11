@@ -329,7 +329,8 @@
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webAppName'))]"
-                    ]
+                    ],
+                    "properties": {}
                 }
             ]
         },
