@@ -208,16 +208,18 @@
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
     "resources": [
-      
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('functionStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[parameters('location')]",
+            "kind": "Storage",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            }
+        }
     ],
     "outputs": {
-        "databricksWorkspace": {
-            "type": "object",
-            "value": "[reference(resourceId('Microsoft.Databricks/workspaces', parameters('databricksWorkspaceName')))]"
-        },
-        "appinsights": {
-            "type": "object",
-            "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appinsightsName')))]"
-        }
+
     }
 }
