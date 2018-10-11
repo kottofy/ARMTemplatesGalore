@@ -217,9 +217,20 @@
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2014-06-01",
+            "name": "[variables('hostingPlanName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "name": "[variables('hostingPlanName')]",
+                "sku": "[parameters('storageAccountSku')]",
+                "workerSize": "[parameters('workerSize')]",
+                "hostingEnvironment": "",
+                "numberOfWorkers": 1
+            }
         }
     ],
-    "outputs": {
-
-    }
+    "outputs": {}
 }
