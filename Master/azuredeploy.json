@@ -211,7 +211,7 @@
 
         {
             "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2014-06-01",
+            "apiVersion": "2015-08-01",
             "name": "[variables('hostingPlanName')]",
             "location": "[parameters('location')]",
             "properties": {
