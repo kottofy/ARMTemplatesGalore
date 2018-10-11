@@ -208,16 +208,7 @@
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
     "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('functionStorageName')]",
-            "apiVersion": "2017-06-01",
-            "location": "[parameters('location')]",
-            "kind": "Storage",
-            "sku": {
-                "name": "[parameters('storageAccountType')]"
-            }
-        },
+
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2014-06-01",
@@ -230,42 +221,6 @@
                 "hostingEnvironment": "",
                 "numberOfWorkers": 1
             }
-        },
-        {
-            "apiVersion": "2016-08-01",
-            "type": "Microsoft.Web/sites",
-            "name": "[variables('functionAppName')]",
-            "location": "[parameters('location')]",
-            "kind": "functionapp",
-            "properties": {
-                "name": "[variables('functionAppName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
-                "hostingEnvironment": "",
-                "clientAffinityEnabled": false,
-                "siteConfig": {
-                    "alwaysOn": true
-                }
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
-            ],
-            "resources": [
-                {
-                    "apiVersion": "2016-08-01",
-                    "name": "appsettings",
-                    "type": "config",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
-                        "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName'))]"
-                    ],
-                    "properties": {
-                        "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('functionStorageName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName')), '2015-05-01-preview').key1,';')]",
-                        "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('functionStorageName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageName')), '2015-05-01-preview').key1,';')]",
-                        "FUNCTIONS_EXTENSION_VERSION": "~1"
-                    }
-                }
-            ]
         },
         {
             "apiVersion": "2015-08-01",
