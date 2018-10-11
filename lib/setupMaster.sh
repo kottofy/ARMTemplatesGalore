@@ -68,8 +68,14 @@ echo '
         "functionAppName": {
             "value": "function'$current'"
         },
-        "hostingPlanName": {
-            "value": "plan'$current'"
+        "webAppHostingPlanName": {
+            "value": "webplan'$current'"
+        },
+        "functionAppHostingPlanName": {
+            "value": "funcplan'$current'"
+        },
+        "funcAppSku": {
+            "value": "S1"
         }
     }
 }

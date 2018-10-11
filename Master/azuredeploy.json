@@ -170,7 +170,7 @@
                 "description": "The site name. To use the default value, do not specify a new value."
             }
         },
-        "hostingPlanName": {
+        "webAppHostingPlanName": {
             "type": "string",
             "defaultValue": "[concat('plan' uniqueString(resourceGroup().id))]",
             "metadata": {
@@ -197,54 +197,83 @@
             "metadata": {
                 "description": "The pricing tier for the hosting plan."
             }
+        },
+        "functionAppHostingPlanName": {
+            "type": "string",
+            "defaultValue": "[concat('plan' uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "The host name. To use the default value, do not specify a new value."
+            }
+        },
+        "funcAppSku": {
+            "type": "string",
+            "allowedValues": [
+                "F1",
+                "D1",
+                "B1",
+                "B2",
+                "B3",
+                "S1",
+                "S2",
+                "S3",
+                "P1",
+                "P2",
+                "P3",
+                "P4"
+            ],
+            "defaultValue": "B1",
+            "metadata": {
+                "description": "The pricing tier for the hosting plan."
+            }
         }
     },
     "variables": {
         "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
         "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
-        "hostingPlanName": "[concat(parameters('prefixName'), parameters('hostingPlanName'))]",
+        "webAppHostingPlanName": "[concat(parameters('prefixName'), parameters('webAppHostingPlanName'))]",
+        "functionAppHostingPlanName": "[concat(parameters('prefixName'), parameters('functionAppHostingPlanName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
     "resources": [
-
         {
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('webAppHostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2015-08-01",
-            "name": "[variables('hostingPlanName')]",
             "location": "[parameters('location')]",
+            "sku": {
+              "name": "[parameters('webAppSku')]",
+              "capacity": "[parameters('workerSize')]"
+            },
             "properties": {
-                "name": "[variables('hostingPlanName')]",
-                "sku": "[parameters('webAppSku')]",
-                "workerSize": "[parameters('workerSize')]",
-                "hostingEnvironment": "",
-                "numberOfWorkers": 1
+              "name": "[parameters('webAppHostingPlanName')]"
             }
-        },
-        {
+          },
+          {
             "apiVersion": "2015-08-01",
-            "name": "[variables('webAppName')]",
+            "name": "[parameters('webAppName')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+              "[resourceId('Microsoft.Web/serverfarms', parameters('webAppHostingPlanName'))]"
             ],
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+              "serverFarmId": "[parameters('webAppHostingPlanName')]"
             },
             "resources": [
-                {
-                    "apiVersion": "2015-08-01",
-                    "name": "web",
-                    "type": "config",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', variables('webAppName'))]"
-                    ],
-                    "properties": {}
-                }
+              {
+                "apiVersion": "2015-08-01",
+                "name": "web",
+                "type": "config",
+                "dependsOn": [
+                  "[resourceId('Microsoft.Web/Sites', parameters('webAppName'))]"
+                ],
+                "properties": {}
+              }
             ]
-        }
+          }
+        
     ],
     "outputs": {}
 }
