@@ -18,7 +18,7 @@
         "databricksPricingTier": {
             "type": "string",
             "defaultValue": "standard",
-            "allowedValues": [  
+            "allowedValues": [
                 "standard",
                 "premium"
             ],
@@ -108,13 +108,6 @@
                 "description": "Location for all resources."
             }
         },
-        "appName": {
-            "type": "string",
-            "defaultValue": "[concat('App', uniquestring(resourceGroup().id))]",
-            "metadata": {
-                "description": "The name of the function app that you wish to create."
-            }
-        },
         "storageAccountSku": {
             "type": "string",
             "allowedValues": [
@@ -179,7 +172,7 @@
         },
         "hostingPlanName": {
             "type": "string",
-            "defaultValue": "[concat(parameters('appName'),'plan')]",
+            "defaultValue": "[concat(parameters('webAppName'),'plan')]",
             "metadata": {
                 "description": "The host name. To use the default value, do not specify a new value."
             }
@@ -209,9 +202,9 @@
     "variables": {
         "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
-        "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]", 
+        "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
         "hostingPlanName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
-        "storageAccountName": "[concat(parameters('prefixName'), parameters('appName')))]",
+        "storageAccountName": "[concat(parameters('prefixName'), parameters('webAppName')))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
     },
