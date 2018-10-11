@@ -230,7 +230,7 @@
                 "hostingEnvironment": "",
                 "numberOfWorkers": 1
             }
-        }
+        },
         {
             "apiVersion": "2016-08-01",
             "type": "Microsoft.Web/sites",
