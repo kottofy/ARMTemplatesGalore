@@ -230,7 +230,7 @@
     "variables": {
         "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
-        "functionStorageName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
+        "functionStorageAccountName`": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
         "webAppHostingPlanName": "[concat(parameters('prefixName'), parameters('webAppHostingPlanName'))]",
         "functionAppHostingPlanName": "[concat(parameters('prefixName'), parameters('functionAppHostingPlanName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
