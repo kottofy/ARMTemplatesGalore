@@ -234,7 +234,8 @@
         "webAppHostingPlanName": "[concat(parameters('prefixName'), parameters('webAppHostingPlanName'))]",
         "functionAppHostingPlanName": "[concat(parameters('prefixName'), parameters('functionAppHostingPlanName'))]",
         "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
-        "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]"
+        "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
+        "functionStorageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('functionStorageAccountName'))]"
     },
     "resources": [
         {
@@ -272,8 +273,70 @@
                 "properties": {}
               }
             ]
+          },
+    {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('functionStorageAccountName')]",
+        "apiVersion": "2018-02-01",
+        "location": "[parameters('location')]",
+        "kind": "Storage",
+        "sku": {
+          "name": "[parameters('storageAccountType')]"
+        }
+      },
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2015-04-01",
+        "name": "[variables('functionAppHostingPlanName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "name": "[variables('functionAppHostingPlanName')]",
+          "computeMode": "Dynamic",
+          "sku": "Dynamic"
+        }
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "type": "Microsoft.Web/sites",
+        "name": "[variables('functionAppName')]",
+        "location": "[parameters('location')]",
+        "kind": "functionapp",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('functionAppHostingPlanName'))]",
+          "[resourceId('Microsoft.Storage/storageAccounts', variables('functionStorageAccountName'))]"
+        ],
+        "properties": {
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionAppHostingPlanName'))]",
+          "siteConfig": {
+            "appSettings": [
+              {
+                "name": "AzureWebJobsDashboard",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+              },
+              {
+                "name": "AzureWebJobsStorage",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+              },
+              {
+                "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+              },
+              {
+                "name": "WEBSITE_CONTENTSHARE",
+                "value": "[toLower(variables('functionAppName'))]"
+              },
+              {
+                "name": "FUNCTIONS_EXTENSION_VERSION",
+                "value": "~1"
+              },
+              {
+                "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                "value": "6.5.0"
+              }
+            ]
           }
-        
+        }
+      }
     ],
     "outputs": {}
 }
