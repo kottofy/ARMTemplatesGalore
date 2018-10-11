@@ -230,6 +230,110 @@
                 "hostingEnvironment": "",
                 "numberOfWorkers": 1
             }
+        },
+        {
+            "type": "Microsoft.Databricks/workspaces",
+            "name": "[parameters('databricksWorkspaceName')]",
+            "location": "[parameters('location')]",
+            "apiVersion": "2018-04-01",
+            "sku": {
+                "name": "[parameters('databricksPricingTier')]"
+            },
+            "properties": {
+                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', variables('managedResourceGroupName'))]"
+            }
+        },
+        {
+            "type": "Microsoft.Insights/components",
+            "name": "[parameters('appinsightsName')]",
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "Application_Type": "other"
+            }
+        },
+        {
+            "name": "[variables('dataFactoryName')]",
+            "apiVersion": "2017-09-01-preview",
+            "type": "Microsoft.DataFactory/factories",
+            "location": "[parameters('dataFactoryLocation')]",
+            "properties": {
+                "description": "Data Factory"
+            }
+        },
+        {
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('webAppSku')]",
+                "capacity": "[parameters('workerSize')]"
+            },
+            "properties": {
+                "name": "[parameters('hostingPlanName')]"
+            }
+        },
+        ,
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName1'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName2'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName3'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName4'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName5'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('prefixName'), parameters('storageAccountName6'))]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageAccountPricingTier')]"
+            },
+            "kind": "StorageV2"
         }
     ],
     "outputs": {}
