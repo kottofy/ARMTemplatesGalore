@@ -253,7 +253,7 @@
           },
           {
             "apiVersion": "2015-08-01",
-            "name": "[parameters('webAppName')]",
+            "name": "[variables('webAppName')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "dependsOn": [
@@ -268,7 +268,7 @@
                 "name": "web",
                 "type": "config",
                 "dependsOn": [
-                  "[resourceId('Microsoft.Web/Sites', parameters('webAppName'))]"
+                  "[resourceId('Microsoft.Web/Sites', variables('webAppName'))]"
                 ],
                 "properties": {}
               }
@@ -311,15 +311,15 @@
             "appSettings": [
               {
                 "name": "AzureWebJobsDashboard",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('functionStorageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
               },
               {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('functionStorageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
               },
               {
                 "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('functionStorageAccountName'), ';AccountKey=', listKeys(variables('functionStorageAccountId'),'2015-05-01-preview').key1)]"
               },
               {
                 "name": "WEBSITE_CONTENTSHARE",
