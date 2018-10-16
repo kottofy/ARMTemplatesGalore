@@ -27,7 +27,7 @@ echo '
             "value": "Standard_LRS"
         },
         "storageAccountTier": {
-            "value": "Standard"
+            "value": "Standard_LRS"
         },
         "workerSize": {
             "value": "0"
