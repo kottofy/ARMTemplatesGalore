@@ -18,13 +18,13 @@ pipeline {
       }
     }
    
-    stage('deploy-master') {
-      steps {
-        sh 'chmod +x ${WORKSPACE}/lib/setupMaster.sh'
-        sh '${WORKSPACE}/lib/setupMaster.sh'
-        sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
-      }
-    }
+    // stage('deploy-master') {
+    //   steps {
+    //     sh 'chmod +x ${WORKSPACE}/lib/setupMaster.sh'
+    //     sh '${WORKSPACE}/lib/setupMaster.sh'
+    //     sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+    //   }
+    // }
 
     // stage('deploy-datafactory') {
     //   steps {
@@ -32,13 +32,13 @@ pipeline {
     //   }
     // }
 
-    //  stage('deploy-keyvault') {
-    //   steps {
-    //       // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-    //       // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-    //       sh 'az group deployment create --resource-group DevJBResourceGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
-    //   }
-    // }
+     stage('deploy-keyvault') {
+      steps {
+          // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+          // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
+      }
+    }
 
     // stage('deploy-web') {
     //   steps {
