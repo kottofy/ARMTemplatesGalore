@@ -23,10 +23,10 @@ echo '
         "appinsightsName": {
             "value": "appinsights'$current'"
         },
-        "storageAccountType": {
+        "storageAccountSku": {
             "value": "Standard_LRS"
         },
-        "storageAccountSku": {
+        "storageAccountTier": {
             "value": "Standard"
         },
         "workerSize": {

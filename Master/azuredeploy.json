@@ -88,7 +88,7 @@
                 "description": "The name of the Azure Storage Account to create for the function."
             }
         },
-        "storageAccountPricingTier": {
+        "storageAccountTier": {
             "type": "string",
             "defaultValue": "Standard_LRS",
             "allowedValues": [
@@ -108,19 +108,6 @@
                 "description": "Location for all resources."
             }
         },
-        "storageAccountSku": {
-            "type": "string",
-            "allowedValues": [
-                "Free",
-                "Shared",
-                "Basic",
-                "Standard"
-            ],
-            "defaultValue": "Basic",
-            "metadata": {
-                "description": "The pricing tier for the hosting plan."
-            }
-        },
         "workerSize": {
             "type": "string",
             "allowedValues": [
@@ -133,7 +120,7 @@
                 "description": "The instance size of the hosting plan (small, medium, or large)."
             }
         },
-        "storageAccountType": {
+        "storageAccountSku": {
             "type": "string",
             "defaultValue": "Standard_LRS",
             "allowedValues": [
@@ -172,7 +159,7 @@
         },
         "webAppHostingPlanName": {
             "type": "string",
-            "defaultValue": "[concat('plan' uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('plan', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The host name. To use the default value, do not specify a new value."
             }
@@ -200,45 +187,23 @@
         },
         "functionAppHostingPlanName": {
             "type": "string",
-            "defaultValue": "[concat('plan' uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('plan', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The host name. To use the default value, do not specify a new value."
-            }
-        },
-        "funcAppSku": {
-            "type": "string",
-            "allowedValues": [
-                "F1",
-                "D1",
-                "B1",
-                "B2",
-                "B3",
-                "S1",
-                "S2",
-                "S3",
-                "P1",
-                "P2",
-                "P3",
-                "P4"
-            ],
-            "defaultValue": "B1",
-            "metadata": {
-                "description": "The pricing tier for the hosting plan."
             }
         }
     },
     "variables": {
-        "managedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]",
         "functionAppName": "[concat(parameters('prefixName'), parameters('functionAppName'))]",
-        "functionStorageAccountName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
-        "webAppHostingPlanName": "[concat(parameters('prefixName'), parameters('webAppHostingPlanName'))]",
         "functionAppHostingPlanName": "[concat(parameters('prefixName'), parameters('functionAppHostingPlanName'))]",
-        "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
-        "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
+        "functionStorageAccountName": "[concat(parameters('prefixName'), parameters('functionStorageAccountName'))]",
         "functionStorageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('functionStorageAccountName'))]",
+        "webAppName": "[concat(parameters('prefixName'), parameters('webAppName'))]",
+        "webAppHostingPlanName": "[concat(parameters('prefixName'), parameters('webAppHostingPlanName'))]",
+        "appInsightsName": "[concat(parameters('prefixName'), parameters('appInsightsName'))]",
+        "dataFactoryName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
         "dataBricksName": "[concat(parameters('prefixName'), parameters('dataFactoryName'))]",
-        "appInsightsName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'))]"
-    
+        "dataBricksManagedResourceGroupName": "[concat(parameters('prefixName'), parameters('databricksWorkspaceName'), uniqueString(parameters('databricksWorkspaceName'), resourceGroup().id))]"
     },
     "resources": [
         {
@@ -284,7 +249,7 @@
             "location": "[parameters('location')]",
             "kind": "Storage",
             "sku": {
-                "name": "[parameters('storageAccountType')]"
+                "name": "[parameters('storageAccountSku')]"
             }
         },
         {
@@ -349,7 +314,7 @@
                 "name": "[parameters('databricksPricingTier')]"
             },
             "properties": {
-                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', variables('managedResourceGroupName'))]"
+                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', variables('dataBricksManagedResourceGroupName'))]"
             }
         },
         {
@@ -376,7 +341,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         },
@@ -386,7 +351,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         },
@@ -396,7 +361,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         },
@@ -406,7 +371,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         },
@@ -416,7 +381,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         },
@@ -426,7 +391,7 @@
             "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('storageAccountPricingTier')]"
+                "name": "[parameters('storageAccountTier')]"
             },
             "kind": "StorageV2"
         }
