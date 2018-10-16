@@ -34,9 +34,9 @@ pipeline {
 
      stage('deploy-keyvault') {
       steps {
-          // sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-          // sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
-          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
+          sh 'chmod +x ${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+          sh '${WORKSPACE}/KeyVault/scripts/deployKeyVault.sh'
+          // sh 'az group deployment create --resource-group DevJBResourceGroup --template-file KeyVault/azuredeploy.json --parameters KeyVault/azuredeploy.parameters.json'
       }
     }
 

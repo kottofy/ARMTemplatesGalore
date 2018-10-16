@@ -9,4 +9,4 @@ az keyvault create \
   --resource-group DevJBResourceGroup \
   --location 'East US' \
   --enabled-for-template-deployment true
-az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+# az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
