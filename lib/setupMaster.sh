@@ -73,9 +73,6 @@ echo '
         },
         "functionAppHostingPlanName": {
             "value": "funcplan'$current'"
-        },
-        "funcAppSku": {
-            "value": "S1"
         }
     }
 }
