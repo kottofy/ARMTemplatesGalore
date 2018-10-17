@@ -1,34 +1,23 @@
-# Extract of LogicApp.Tests.with.CLI.ps1
+#
+# This invokes pester test run.
+#
 
-Describe "Deployment Tests" {
-    # Init
-    # BeforeAll {
-    #     az login --service-principal -u $Username -p $Password -t $TenantId
-    # }
+Param(
+    [string] [Parameter(Mandatory=$true)] $ResourceGroupName,
+    [string] [Parameter(Mandatory=$true)] $TestFilePath,
+    [string] [Parameter(Mandatory=$true)] $SrcDirectory,
+    [string] [Parameter(Mandatory=$true)] $OutputDirectory,
+    [string] [Parameter(Mandatory=$true)] $BuildNumber,
+    [string] [Parameter(Mandatory=$true)] $Username,
+    [string] [Parameter(Mandatory=$true)] $Password,
+    [string] [Parameter(Mandatory=$true)] $TenantId
+)
 
-    # Teardown
-    AfterAll {
-    }
+$segment = $TestFilePath.Split("\")
+$testFile = $segment[$segment.Length - 1].Replace(".ps1", "");
+$outputFile = "$OutputDirectory\TEST-$testFile-$BuildNumber.xml"
 
-    # Tests whether the cmdlet returns value or not.
-    Context "When deployed with parameters" {
-        $output = az group deployment validate `
-            --resource-group DevJBResourceGroup `
-            --template-file Master/azuredeploy.json `
-            --parameters Master/azuredeploy.parameters.json `
-            | ConvertFrom-Json
+$parameters = @{ ResourceGroupName = $ResourceGroupName; SrcDirectory = $SrcDirectory; Username = $Username; Password = $Password; TenantId = $TenantId }
+$script = @{ Path = $TestFilePath; Parameters = $parameters }
 
-        $result = $output.properties
-
-        It "Should be deployed successfully" {
-            $result.provisioningState | Should -Be "Succeeded"
-        }
-
-        # It "Should have name of" {
-        #     $expected = "log-app"
-        #     $resource = $result.validatedResources[0]
-
-        #     $resource.name | Should -Be $expected
-        # }
-    }
-}
+Invoke-Pester -Script $script -OutputFile $outputFile -OutputFormat NUnitXml
