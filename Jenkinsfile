@@ -22,7 +22,7 @@ pipeline {
       steps {
         sh 'chmod +x ${WORKSPACE}/scripts/setupMaster.sh'
         sh '${WORKSPACE}/scripts/setupMaster.sh'
-        sh 'az group deployment create --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
+        sh 'az group deployment validate --resource-group DevJBResourceGroup --template-file Master/azuredeploy.json --parameters Master/azuredeploy.parameters.json'
       }
     }
 
