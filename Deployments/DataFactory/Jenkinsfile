@@ -1,0 +1,28 @@
+pipeline {
+  agent any
+  stages {
+   
+    stage('login') {
+      steps {
+        withCredentials(bindings: [azureServicePrincipal('Kristins Azure ARMTemplatePractice')]) {
+          sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+        }
+      }
+    }
+
+    stage('dev-setup') {
+      steps {
+        sh 'chmod +x ${WORKSPACE}/scripts/setupRG.sh'
+        sh '${WORKSPACE}/scripts/setupRG.sh'
+        sh 'ls ${WORKSPACE}'
+      }
+    }
+
+    stage('deploy-datafactory') {
+      steps {
+          sh 'az group deployment create --resource-group DevJBResourceGroup --template-file DataFactory/azuredeploy.json --parameters DataFactory/azuredeploy.parameters.json'
+      }
+    }
+
+  }
+}

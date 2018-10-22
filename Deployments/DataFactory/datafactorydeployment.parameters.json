@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "ExecSummaryIngest"
+        },
+        "JetBlueAzureDatabricksExecutiveReporting_accessToken": {
+            "value": "123"
+        },
+        "CddFileUploadTrigger_properties_CddProcessUpload_parameters_sourceFolder": {
+            "value": "@triggerBody().folderPath"
+        },
+        "CddFileUploadTrigger_properties_CddProcessUpload_parameters_sourceFile": {
+            "value": "@triggerBody().fileName"
+        },
+        "CddFileUploadTrigger_properties_typeProperties_scope": {
+            "value": "/subscriptions/d173caa3-9516-4841-bf1e-056a4ccba7f0/resourceGroups/JB-RG-DEV-CSE/providers/Microsoft.Storage/storageAccounts/jbercddindraw"
+        }
+    }
+}
