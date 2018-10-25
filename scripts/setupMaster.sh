@@ -26,9 +26,6 @@ echo '
         "storageAccountSku": {
             "value": "Standard_LRS"
         },
-        "storageAccountTier": {
-            "value": "Standard_LRS"
-        },
         "workerSize": {
             "value": "0"
         },
