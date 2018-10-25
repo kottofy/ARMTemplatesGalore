@@ -13,7 +13,7 @@ pipeline {
     stage('dev-setup') {
       steps {
         sh 'chmod +x ${WORKSPACE}/scripts/setupRG.sh'
-        sh '${WORKSPACE}/scripts/setupRG.sh'
+        // sh '${WORKSPACE}/scripts/setupRG.sh'
         sh 'ls ${WORKSPACE}'
       }
     }
