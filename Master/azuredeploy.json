@@ -301,7 +301,7 @@
                 "name": "[parameters('databricksPricingTier')]"
             },
             "properties": {
-                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', 'DevJBResourceGroup')]"
+                "ManagedResourceGroupId": "[concat(subscription().id, '/resourceGroups/', variables('dataBricksManagedResourceGroupName'))]"
             }
         },
         {
